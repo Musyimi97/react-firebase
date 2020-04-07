@@ -22,22 +22,26 @@ class App extends Component{
   // component mount
 
   componentWillMount(){
-    setInterval(() => {
-      let time=new Date()
+    setInterval(()=>{
+      let time= new Date()
       this.setState({
-      year: this.state.Zodiac[time.getUTCFullYear()%12],
-      M_month:this.state.M_months[time.getUTCMonth()],
-      month:time.getMonth()+1,
-      day:time.getDate(),
-      week:time.getDay(),
-      hour:time.getHours(),
-      Minute:time.getMinutes(),
-      second:time.getSeconds
-      )}
-      
-    }, 1000);
+       year:this.state.Zodiac[time.getUTCFullYear()%12],
+       M_month:this.state.M_months[time.getUTCMonth()],
+       month:time.getMonth()+1,
+       day:time.getDate(),
+       week:time.getDay(),
+       hour:time.getHours(),
+       Minute:time.getMinutes(),
+       second:time.getSeconds()
+      })
+    },1000)
+ 
   }
-
+  array = length => Array.from({length}).map((v, k) => k).map(x=>x+1);
+  addPreZero = num =>{
+    if(num>=10)return num
+    return '0'+num
+  }
 
 }
 
