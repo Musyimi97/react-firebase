@@ -14,9 +14,28 @@ class App extends Component{
       Minute:1,
       second:1,
       Zodiac:'Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces'.split(','),
-      M_month:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Spt","Oct","Nov","Dec"],
+      M_months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Spt","Oct","Nov","Dec"],
 
     })
+  }
+
+  // component mount
+
+  componentWillMount(){
+    setInterval(() => {
+      let time=new Date()
+      this.setState({
+      year: this.state.Zodiac[time.getUTCFullYear()%12],
+      M_month:this.state.M_months[time.getUTCMonth()],
+      month:time.getMonth()+1,
+      day:time.getDate(),
+      week:time.getDay(),
+      hour:time.getHours(),
+      Minute:time.getMinutes(),
+      second:time.getSeconds
+      )}
+      
+    }, 1000);
   }
 
 
